@@ -6,22 +6,49 @@
 
 package model;
 
-import java.awt.Point;
+import java.io.Serializable;
+
 /**
  *
  * @author ricardobalduino
  */
-public class Reta {
-    private Point coord1;
-    private Point coord2;
+public class Reta implements Serializable {
+    private Ponto coordInicial;
+    private Ponto coordFinal;
 
-    public Point getCoord1() {
-        return coord1;
+    public Reta() {
+        coordInicial = new Ponto();
+        coordFinal = new Ponto();
     }
 
-    public Point getCoord2() {
-        return coord2;
+    /**
+     * @return the coordInicial
+     */
+    public Ponto getCoordInicial() {
+        return coordInicial;
     }
+
+    /**
+     * @return the coordFinal
+     */
+    public Ponto getCoordFinal() {
+        return coordFinal;
+    }
+
+    /**
+     * @param coordInicial the coordInicial to set
+     */
+    public void setCoordInicial(Ponto coordInicial) {
+        this.coordInicial = coordInicial;
+    }
+
+    /**
+     * @param coordFinal the coordFinal to set
+     */
+    public void setCoordFinal(Ponto coordFinal) {
+        this.coordFinal = coordFinal;
+    }
+    
     
     
 }
