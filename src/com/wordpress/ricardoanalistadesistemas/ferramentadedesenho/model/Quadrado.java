@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package com.wordpress.ricardoanalistadesistemas.ferramentadedesenho.model;
 
+import java.awt.Graphics2D;
 import java.io.Serializable;
 
 /**
  *
  * @author ricardobalduino
  */
-public class Quadrado implements Serializable {
+public class Quadrado extends FormaBidimensional implements Serializable {
     private Ponto coord;
     private int lado;
 
@@ -47,6 +48,13 @@ public class Quadrado implements Serializable {
     public void setLado(int lado) {
         this.lado = lado;
     }
-    
-    
+
+    @Override
+    public void desenhar(Graphics2D g) {
+        if (preenchido){
+            g.fillRect(coord.getX(), coord.getY(), lado, lado);
+        } else {
+            g.drawRect(coord.getX(), coord.getY(), lado, lado);
+        }
+    }   
 }

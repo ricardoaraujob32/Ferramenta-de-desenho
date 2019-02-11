@@ -4,15 +4,16 @@
  * and open the template in the editor.
  */
 
-package model;
+package com.wordpress.ricardoanalistadesistemas.ferramentadedesenho.model;
 
+import java.awt.Graphics2D;
 import java.io.Serializable;
 
 /**
  *
  * @author ricardobalduino
  */
-public class Reta implements Serializable {
+public class Reta implements Serializable, FormaGeometrica {
     private Ponto coordInicial;
     private Ponto coordFinal;
 
@@ -48,7 +49,9 @@ public class Reta implements Serializable {
     public void setCoordFinal(Ponto coordFinal) {
         this.coordFinal = coordFinal;
     }
-    
-    
-    
+
+    @Override
+    public void desenhar(Graphics2D g) {
+        g.drawLine(coordInicial.getX(), coordInicial.getY(), coordFinal.getX(), coordFinal.getY());
+    }    
 }

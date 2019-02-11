@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package com.wordpress.ricardoanalistadesistemas.ferramentadedesenho.model;
 
-import java.io.Serializable;
+import java.awt.Graphics2D;
 
 /**
  *
  * @author ricardobalduino
  */
-public class Retangulo implements Serializable {
+public class Retangulo extends FormaBidimensional {
     private Ponto coord;
     private int largura;
     private int altura;
@@ -63,6 +63,13 @@ public class Retangulo implements Serializable {
     public void setAltura(int altura) {
         this.altura = altura;
     }
-    
-    
+
+    @Override
+    public void desenhar(Graphics2D g) {
+        if (preenchido){
+            g.fillRect(coord.getX(), coord.getY(), largura, altura);
+        } else {
+            g.drawRect(coord.getX(), coord.getY(), largura, altura);
+        }
+    }
 }

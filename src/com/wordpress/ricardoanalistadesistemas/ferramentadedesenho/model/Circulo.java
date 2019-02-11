@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package com.wordpress.ricardoanalistadesistemas.ferramentadedesenho.model;
 
-import java.io.Serializable;
+import java.awt.Graphics2D;
 
 /**
- *
+ * 
  * @author ricardobalduino
  */
-public class Circulo implements Serializable {
+public class Circulo extends FormaBidimensional {
     private Ponto coord;
     private int raio;
 
@@ -47,5 +47,14 @@ public class Circulo implements Serializable {
     public void setRaio(int raio) {
         this.raio = raio;
     }   
+
+    @Override
+    public void desenhar(Graphics2D g) {
+        if (preenchido){
+            g.fillOval(coord.getX(), coord.getY(), raio, raio);
+        } else {
+            g.drawOval(coord.getX(), coord.getY(), raio, raio);
+        }
+    }
     
 }

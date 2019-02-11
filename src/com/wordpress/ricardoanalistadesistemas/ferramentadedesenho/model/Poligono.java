@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package com.wordpress.ricardoanalistadesistemas.ferramentadedesenho.model;
 
-import java.io.Serializable;
+import java.awt.Graphics2D;
+import java.awt.Polygon;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,8 +14,8 @@ import java.util.Set;
  *
  * @author ricardobalduino
  */
-public class Poligono implements Serializable {
-    private HashSet<Ponto> setPontos;
+public class Poligono extends FormaBidimensional {
+    protected HashSet<Ponto> setPontos;
 
     public Poligono() {
         setPontos = new HashSet<>();
@@ -34,5 +35,18 @@ public class Poligono implements Serializable {
     
     public int getNumLados(){
         return setPontos.size();
+    }
+
+    @Override
+    public void desenhar(Graphics2D g) {
+        Polygon poligono = new Polygon();
+        
+        setPontos.forEach( (p) -> poligono.addPoint( p.getX(), p.getY() ) );
+        
+        if (preenchido){
+            g.fillPolygon(poligono);
+        } else {
+            g.drawPolygon(poligono);
+        }
     }
 }

@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package com.wordpress.ricardoanalistadesistemas.ferramentadedesenho.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.FlowLayout;
+import java.awt.GradientPaint;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
@@ -33,12 +34,15 @@ public class DialogoPropriedades extends JDialog implements ActionListener {
     private Color cor2;    
     private JTextField txtCor1;
     private JTextField txtCor2;
+    private boolean temDuasCores;
+    private JCheckBox ckbxTemDuasCores;
     
     
     public DialogoPropriedades(JFrame frame) {
         super(frame);
         setTitle("Configurar opções de desenho");
         setModal(true);
+        temDuasCores = false;
         
         Container container = getContentPane();
         container.setLayout( new BorderLayout() );
@@ -46,7 +50,7 @@ public class DialogoPropriedades extends JDialog implements ActionListener {
         JPanel painelNorte = new JPanel( new FlowLayout(FlowLayout.LEFT) );
         txtCor1 = new JTextField(15);
         JButton btnCor1 = new JButton("Escolher cor");
-        JCheckBox ckbxTemDuasCores = new JCheckBox("Tem 2 cores");
+        ckbxTemDuasCores = new JCheckBox("Tem 2 cores");
         txtCor2 = new JTextField(15);
         JButton btnCor2 = new JButton("Escolher cor");
         
@@ -62,6 +66,7 @@ public class DialogoPropriedades extends JDialog implements ActionListener {
             @Override
             public void stateChanged(ChangeEvent e) {
                 JCheckBox source = (JCheckBox) e.getSource();
+                temDuasCores = source.isSelected();
                 
                 if ( source.isSelected() ){
                     txtCor2.setEnabled(true);
@@ -114,8 +119,15 @@ public class DialogoPropriedades extends JDialog implements ActionListener {
             }
             
             txtCor2.setText( String.format("(%s,%s,%s)", cor2.getRed(), cor2.getGreen(), cor2.getBlue() ) );
+            temDuasCores = true;
+        } else if ( "OK".equals(cmd) ){
+            if ( temDuasCores && ckbxTemDuasCores.isSelected() ){
+                GradientPaint paint = new GradientPaint(0, 0, cor1, 0, 0, cor2, temDuasCores);
+            }
         }
     }
+    
+    
     
     public static void main(String[] args) {
         new DialogoPropriedades(null);

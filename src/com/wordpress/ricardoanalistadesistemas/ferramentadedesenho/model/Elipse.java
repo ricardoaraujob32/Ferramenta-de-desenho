@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package com.wordpress.ricardoanalistadesistemas.ferramentadedesenho.model;
 
-import java.io.Serializable;
+import java.awt.Graphics2D;
 
 /**
  *
  * @author ricardobalduino
  */
-public class Elipse implements Serializable {
+public class Elipse extends FormaBidimensional{
     private Ponto coord;
     private int eixoHorizontal;
     private int eixoVertical;
@@ -65,6 +65,15 @@ public class Elipse implements Serializable {
      */
     public void setEixoVertical(int eixoVertical) {
         this.eixoVertical = eixoVertical;
+    }
+
+    @Override
+    public void desenhar(Graphics2D g) {
+        if (preenchido){
+            g.fillOval(coord.getX(), coord.getY(), eixoHorizontal, eixoVertical);
+        } else {
+            g.drawOval(coord.getX(), coord.getY(), eixoHorizontal, eixoVertical);
+        }
     }
     
     

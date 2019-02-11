@@ -3,14 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package com.wordpress.ricardoanalistadesistemas.ferramentadedesenho.model;
 
-import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 /**
  *
  * @author ricardobalduino
  */
 public interface FormaGeometrica {
-    void desenhar(Graphics g);
+
+    /**
+     *
+     * @param g
+     */
+    void desenhar(Graphics2D g);
 }

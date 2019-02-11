@@ -3,17 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package com.wordpress.ricardoanalistadesistemas.ferramentadedesenho.model;
+
+import java.awt.Image;
 
 /**
  *
  * @author ricardobalduino
  */
-public enum FormaGeometrica {
-
-    RETA, RETANGULO, CIRCULO;
-
-    private FormaGeometrica() {
-    }
+public class Desenho {
+    String caminhoArquivo;
     
 }
